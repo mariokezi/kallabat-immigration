@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -33,60 +34,54 @@ export function Navbar() {
   return (
     <>
       {/* Top bar */}
-      <div className="bg-navy-deep text-white/70 text-xs py-2.5 px-6 hidden md:block border-b border-white/[0.05]">
+      <div className="bg-navy-deep text-white/60 text-xs py-2 px-6 hidden md:block border-b border-white/[0.05]">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <span className="tracking-wide">{siteConfig.address.full}</span>
-          <div className="flex items-center gap-6">
+          <span>{siteConfig.address.full}</span>
+          <div className="flex items-center gap-5">
             <a
               href={`tel:${siteConfig.phone.replace(/[^\d]/g, "")}`}
-              className="flex items-center gap-1.5 hover:text-gold transition-colors duration-300"
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
             >
               <Phone className="w-3 h-3" />
-              <span className="tracking-wide">{siteConfig.phone}</span>
+              {siteConfig.phone}
             </a>
-            <span className="text-white/30">|</span>
+            <span className="text-white/20">|</span>
             <span className="text-white/40">{siteConfig.hours.split("|")[0].trim()}</span>
           </div>
         </div>
       </div>
 
       {/* Main nav */}
-      <motion.header
-        initial={false}
-        animate={{
-          backgroundColor: scrolled ? "rgba(255,255,255,0.72)" : "rgba(6,23,39,0.95)",
-        }}
-        transition={{ duration: 0.5 }}
+      <header
         className={cn(
-          "sticky top-0 z-50 transition-all duration-500",
+          "sticky top-0 z-50 transition-all duration-300",
           scrolled
-            ? "glass shadow-lg shadow-black/[0.04] backdrop-blur-xl"
-            : "backdrop-blur-sm border-b border-white/[0.05]"
+            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border/50"
+            : "bg-navy-deep/95 backdrop-blur-sm border-b border-white/[0.05]"
         )}
       >
         <div className={cn(
-          "max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-500",
-          scrolled ? "h-18" : "h-20"
+          "max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-300",
+          scrolled ? "h-16" : "h-18"
         )}>
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className={cn(
-              "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 border",
-              scrolled
-                ? "bg-navy border-navy/20"
-                : "bg-white/[0.06] border-white/[0.1]"
-            )}>
-              <span className="text-gold font-display font-bold text-xl">K</span>
-            </div>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/logo.jpg"
+              alt="Joseph Kallabat & Associates"
+              width={40}
+              height={40}
+              className="rounded"
+            />
             <div className="hidden sm:block">
               <span className={cn(
-                "font-display font-semibold text-xl leading-tight block transition-colors duration-500",
+                "font-bold text-lg leading-tight block transition-colors duration-300",
                 scrolled ? "text-navy" : "text-white"
               )}>
                 Kallabat Law
               </span>
               <span className={cn(
-                "text-[11px] tracking-[0.15em] uppercase leading-tight transition-colors duration-500",
+                "text-[10px] tracking-[0.12em] uppercase leading-tight transition-colors duration-300",
                 scrolled ? "text-body/60" : "text-white/40"
               )}>
                 Immigration Attorneys
@@ -95,7 +90,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <div
                 key={link.label}
@@ -108,7 +103,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   className={cn(
-                    "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative",
+                    "px-3.5 py-2 rounded-md text-sm font-medium transition-colors duration-200",
                     scrolled
                       ? "text-dark/70 hover:text-navy hover:bg-navy/[0.04]"
                       : "text-white/60 hover:text-white hover:bg-white/[0.06]"
@@ -119,7 +114,7 @@ export function Navbar() {
                     {link.children && (
                       <ChevronDown
                         className={cn(
-                          "w-3 h-3 transition-transform duration-300",
+                          "w-3 h-3 transition-transform duration-200",
                           activeDropdown === link.label && "rotate-180"
                         )}
                       />
@@ -131,15 +126,15 @@ export function Navbar() {
                 <AnimatePresence>
                   {link.children && activeDropdown === link.label && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.97 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.97 }}
-                      transition={{ duration: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.15 }}
                       className={cn(
-                        "absolute top-full left-0 mt-2 w-60 rounded-xl shadow-2xl p-2",
+                        "absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl p-1.5",
                         scrolled
-                          ? "bg-white border border-border/60 shadow-black/[0.08]"
-                          : "bg-navy/95 backdrop-blur-xl border border-white/[0.08] shadow-black/40"
+                          ? "bg-white border border-border/60"
+                          : "bg-navy border border-white/[0.08]"
                       )}
                     >
                       {link.children.map((child) => (
@@ -147,7 +142,7 @@ export function Navbar() {
                           key={child.href}
                           href={child.href}
                           className={cn(
-                            "block px-4 py-2.5 rounded-lg text-sm transition-all duration-200",
+                            "block px-3.5 py-2.5 rounded-md text-sm transition-colors duration-150",
                             scrolled
                               ? "text-body hover:text-navy hover:bg-blue-light/50"
                               : "text-white/60 hover:text-white hover:bg-white/[0.06]"
@@ -173,7 +168,7 @@ export function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={cn(
-                "lg:hidden p-2 rounded-lg transition-colors",
+                "lg:hidden p-2 rounded-md transition-colors",
                 scrolled
                   ? "hover:bg-navy/[0.04] text-dark"
                   : "hover:bg-white/[0.06] text-white"
@@ -184,7 +179,7 @@ export function Navbar() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile menu */}
       <AnimatePresence>
@@ -194,7 +189,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 220 }}
-            className="fixed inset-0 top-[calc(4.5rem+1px)] z-40 bg-navy-deep overflow-y-auto lg:hidden"
+            className="fixed inset-0 top-[calc(4rem+1px)] z-40 bg-navy-deep overflow-y-auto lg:hidden"
           >
             <nav className="p-6 space-y-1">
               {navLinks.map((link, i) => (
@@ -207,7 +202,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3.5 rounded-xl text-lg font-display font-medium text-white/80 hover:text-gold hover:bg-white/[0.04] transition-all"
+                    className="block px-4 py-3 rounded-lg text-lg font-medium text-white/80 hover:text-white hover:bg-white/[0.04] transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -218,7 +213,7 @@ export function Navbar() {
                           key={child.href}
                           href={child.href}
                           onClick={() => setMobileOpen(false)}
-                          className="block px-4 py-2 rounded-lg text-sm text-white/40 hover:text-gold hover:bg-white/[0.04] transition-all"
+                          className="block px-4 py-2 rounded-md text-sm text-white/40 hover:text-white/70 hover:bg-white/[0.04] transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -235,7 +230,7 @@ export function Navbar() {
                 </Link>
                 <a
                   href={`tel:${siteConfig.phone.replace(/[^\d]/g, "")}`}
-                  className="flex items-center justify-center gap-2 py-3 text-gold font-medium"
+                  className="flex items-center justify-center gap-2 py-3 text-white/70 font-medium"
                 >
                   <Phone className="w-4 h-4" />
                   {siteConfig.phone}

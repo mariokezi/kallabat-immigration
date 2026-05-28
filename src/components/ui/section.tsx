@@ -21,25 +21,10 @@ export function Section({ children, className, id, dark }: SectionProps) {
       transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
       className={cn(
         "relative py-24 md:py-32 px-6 overflow-hidden",
-        dark ? "bg-navy text-white" : "bg-warm-white",
+        dark ? "bg-navy-deep text-white" : "bg-warm-white",
         className
       )}
     >
-      {dark && (
-        <>
-          <div className="absolute inset-0 opacity-[0.03]">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="section-grid" width="80" height="80" patternUnits="userSpaceOnUse">
-                  <path d="M 80 0 L 0 0 0 80" fill="none" stroke="white" strokeWidth="0.3" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#section-grid)" />
-            </svg>
-          </div>
-          <div className="grain absolute inset-0" />
-        </>
-      )}
       <div className="relative max-w-7xl mx-auto">{children}</div>
     </motion.section>
   );
@@ -67,16 +52,10 @@ export function SectionHeader({
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className={cn(
-            "inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium tracking-wide mb-6",
-            light
-              ? "bg-white/[0.06] border border-white/[0.08] text-gold-light"
-              : "bg-gold/[0.08] border border-gold/[0.15] text-gold"
+            "inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-5",
+            light ? "text-white/50" : "text-blue"
           )}
         >
-          <span className={cn(
-            "w-1.5 h-1.5 rounded-full",
-            light ? "bg-gold-light" : "bg-gold"
-          )} />
           {badge}
         </motion.span>
       )}
@@ -86,7 +65,7 @@ export function SectionHeader({
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className={cn(
-          "font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-5",
+          "text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5",
           light ? "text-white" : "text-dark"
         )}
       >
@@ -100,7 +79,7 @@ export function SectionHeader({
           transition={{ duration: 0.6, delay: 0.2 }}
           className={cn(
             "text-lg max-w-2xl mx-auto leading-relaxed",
-            light ? "text-gray-400" : "text-body"
+            light ? "text-white/50" : "text-body"
           )}
         >
           {description}

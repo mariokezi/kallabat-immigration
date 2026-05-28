@@ -242,7 +242,7 @@ function AccordionItem({
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
-                      className="glass-dark rounded-xl p-6"
+                      className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-6"
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <Award className="w-4 h-4 text-gold shrink-0" />

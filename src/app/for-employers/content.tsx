@@ -318,7 +318,7 @@ export function ForEmployersContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-dark rounded-xl p-6"
+                className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-6"
               >
                 <card.icon className="w-8 h-8 text-gold mb-3" />
                 <h4 className="text-white font-semibold mb-2 text-sm">

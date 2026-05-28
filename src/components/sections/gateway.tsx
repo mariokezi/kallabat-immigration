@@ -18,8 +18,6 @@ const paths = [
       "Worksite Compliance",
       "Industry-Specific Solutions",
     ],
-    accent: "from-blue to-navy",
-    accentLight: "bg-blue/[0.06]",
   },
   {
     title: "For Individuals",
@@ -33,8 +31,6 @@ const paths = [
       "Visa Consultations",
       "Status Adjustments",
     ],
-    accent: "from-gold to-gold-light",
-    accentLight: "bg-gold/[0.05]",
   },
 ];
 
@@ -46,57 +42,45 @@ export function Gateway() {
         title="Immigration Solutions Tailored to You"
         description="Whether you're an employer seeking global talent or an individual navigating the immigration process, we're here to guide you."
       />
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-6">
         {paths.map((path, i) => (
           <motion.div
             key={path.title}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ delay: i * 0.12, duration: 0.6 }}
           >
             <Link href={path.href} className="group block h-full">
-              <div className="relative h-full p-8 md:p-10 rounded-2xl border border-border/60 bg-white hover:border-gold/30 transition-all duration-700 overflow-hidden shimmer-border">
-                {/* Gradient top accent */}
-                <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${path.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
-
-                {/* Background glow on hover */}
-                <div className={`absolute -top-20 -right-20 w-60 h-60 rounded-full ${path.accentLight} blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
-
-                <div className="relative">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className={`w-14 h-14 rounded-2xl ${path.accentLight} border border-border/40 flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}>
-                      <path.icon className="w-6 h-6 text-navy" />
-                    </div>
-                    <h3 className="font-display text-3xl font-semibold text-dark group-hover:text-navy transition-colors duration-300">
-                      {path.title}
-                    </h3>
+              <div className="relative h-full p-8 md:p-10 rounded-xl border border-border/60 bg-white hover:border-navy/20 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-lg bg-navy/[0.04] flex items-center justify-center group-hover:bg-navy/[0.08] transition-colors duration-300">
+                    <path.icon className="w-5 h-5 text-navy" />
                   </div>
+                  <h3 className="text-2xl font-bold text-dark">
+                    {path.title}
+                  </h3>
+                </div>
 
-                  <p className="text-body mb-8 leading-relaxed">
-                    {path.description}
-                  </p>
+                <p className="text-body mb-8 leading-relaxed">
+                  {path.description}
+                </p>
 
-                  <ul className="space-y-3.5 mb-8">
-                    {path.features.map((feature, fi) => (
-                      <motion.li
-                        key={feature}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + fi * 0.06 }}
-                        className="flex items-center gap-3 text-sm"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
-                        <span className="text-dark/80">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
+                <ul className="space-y-3 mb-8">
+                  {path.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-center gap-3 text-sm"
+                    >
+                      <div className="w-1 h-1 rounded-full bg-navy/40 shrink-0" />
+                      <span className="text-dark/80">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                  <div className="flex items-center gap-2 text-navy font-semibold text-sm group-hover:text-gold group-hover:gap-3 transition-all duration-300">
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
+                <div className="flex items-center gap-2 text-navy font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                  Learn More
+                  <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
             </Link>

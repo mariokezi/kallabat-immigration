@@ -49,19 +49,19 @@ function Stars({ count }: { count: number }) {
 
 function ReviewCard({ review }: { review: typeof reviews[0] }) {
   return (
-    <div className="w-[380px] shrink-0 p-7 rounded-2xl border border-border/50 bg-white hover:border-gold/20 hover:shadow-lg hover:shadow-gold/[0.03] transition-all duration-500 mx-3">
+    <div className="w-[360px] shrink-0 p-6 rounded-xl border border-border/50 bg-white hover:shadow-md transition-all duration-300 mx-2.5">
       <Stars count={review.rating} />
       <p className="text-dark/80 mt-4 mb-5 leading-relaxed text-sm">
         &ldquo;{review.text}&rdquo;
       </p>
       <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-navy to-blue flex items-center justify-center">
+        <div className="w-8 h-8 rounded-full bg-navy flex items-center justify-center">
           <span className="text-xs font-bold text-white">
             {review.name.charAt(0)}
           </span>
         </div>
         <div>
-          <span className="text-sm font-medium text-dark block">
+          <span className="text-sm font-semibold text-dark block">
             {review.name}
           </span>
           <span className="text-xs text-body/60">Verified Review</span>
@@ -91,7 +91,7 @@ export function GoogleReviews() {
           className="flex flex-col items-center mb-14"
         >
           <div className="flex items-center gap-4 mb-3">
-            <span className="font-display text-6xl font-semibold text-dark">4.9</span>
+            <span className="text-5xl font-bold text-dark">4.9</span>
             <div>
               <Stars count={5} />
               <span className="text-sm text-body/60 mt-1 block">601+ Reviews on Google</span>
@@ -101,7 +101,7 @@ export function GoogleReviews() {
             href="https://www.google.com/maps/place/Joseph+Kallabat+%26+Associates,+P.C."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-navy hover:text-gold font-medium mt-2 transition-colors duration-300"
+            className="inline-flex items-center gap-1.5 text-sm text-navy hover:text-blue font-medium mt-2 transition-colors duration-200"
           >
             See All Reviews on Google
             <ExternalLink className="w-3.5 h-3.5" />
@@ -111,9 +111,8 @@ export function GoogleReviews() {
 
       {/* Marquee row */}
       <div className="relative overflow-hidden">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         <div className="flex animate-marquee">
           {allReviews.map((review, i) => (

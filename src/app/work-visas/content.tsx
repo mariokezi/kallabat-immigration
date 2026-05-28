@@ -223,7 +223,7 @@ function AccordionItem({ visa, isOpen, onToggle }: { visa: VisaType; isOpen: boo
               <p className="text-body leading-relaxed">{visa.description}</p>
 
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="glass-dark rounded-xl p-6">
+                <div className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-6">
                   <div className="flex items-center gap-2 mb-4">
                     <Users className="w-5 h-5 text-gold" />
                     <h4 className="text-white font-semibold">Who Qualifies</h4>
@@ -238,7 +238,7 @@ function AccordionItem({ visa, isOpen, onToggle }: { visa: VisaType; isOpen: boo
                   </ul>
                 </div>
 
-                <div className="glass-dark rounded-xl p-6">
+                <div className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-6">
                   <div className="flex items-center gap-2 mb-4">
                     <FileText className="w-5 h-5 text-gold" />
                     <h4 className="text-white font-semibold">Key Requirements</h4>
