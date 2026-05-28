@@ -41,10 +41,11 @@ export function IndustriesSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.06, duration: 0.5 }}
-              className="group p-6 rounded-xl border border-border/50 bg-warm-white hover:bg-white hover:border-navy/15 hover:shadow-md transition-all duration-300"
+              transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4 }}
+              className="group p-6 rounded-2xl border border-border/50 bg-warm-white hover:bg-white hover:border-navy/15 hover:shadow-[0_12px_40px_-10px_rgba(10,37,64,0.10)] transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-navy/[0.04] flex items-center justify-center mb-4 group-hover:bg-navy/[0.08] transition-colors duration-300">
+              <div className="w-10 h-10 rounded-lg bg-navy/[0.05] flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-navy/10 group-hover:to-blue/10 transition-all duration-300">
                 <Icon className="w-5 h-5 text-navy/70" />
               </div>
               <h3 className="text-lg font-bold text-dark mb-2">

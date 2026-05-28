@@ -30,7 +30,7 @@ const badges = ["AILA Member", "AV Preeminent", "Super Lawyers"];
 
 export function Footer() {
   return (
-    <footer className="bg-navy-deep text-white">
+    <footer className="bg-navy-deep text-white grain">
       {/* CTA Band */}
       <div className="border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">

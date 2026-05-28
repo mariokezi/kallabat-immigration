@@ -49,13 +49,13 @@ function Stars({ count }: { count: number }) {
 
 function ReviewCard({ review }: { review: typeof reviews[0] }) {
   return (
-    <div className="w-[360px] shrink-0 p-6 rounded-xl border border-border/50 bg-white hover:shadow-md transition-all duration-300 mx-2.5">
+    <div className="w-[360px] shrink-0 p-6 rounded-2xl border border-border/50 bg-white hover:shadow-[0_12px_40px_-10px_rgba(10,37,64,0.08)] hover:border-navy/10 transition-all duration-300 mx-2.5">
       <Stars count={review.rating} />
       <p className="text-dark/80 mt-4 mb-5 leading-relaxed text-sm">
         &ldquo;{review.text}&rdquo;
       </p>
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-full bg-navy flex items-center justify-center">
+        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-navy to-blue flex items-center justify-center">
           <span className="text-xs font-bold text-white">
             {review.name.charAt(0)}
           </span>

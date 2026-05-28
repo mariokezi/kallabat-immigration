@@ -21,11 +21,11 @@ export function Section({ children, className, id, dark }: SectionProps) {
       transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
       className={cn(
         "relative py-24 md:py-32 px-6 overflow-hidden",
-        dark ? "bg-navy-deep text-white" : "bg-warm-white",
+        dark ? "bg-navy-deep text-white grain" : "bg-warm-white",
         className
       )}
     >
-      <div className="relative max-w-7xl mx-auto">{children}</div>
+      <div className="relative z-10 max-w-7xl mx-auto">{children}</div>
     </motion.section>
   );
 }
@@ -52,10 +52,16 @@ export function SectionHeader({
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className={cn(
-            "inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-5",
-            light ? "text-white/50" : "text-blue"
+            "inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.15em] mb-6 border",
+            light
+              ? "border-white/[0.08] text-white/50 bg-white/[0.04]"
+              : "border-navy/10 text-navy bg-navy/[0.04]"
           )}
         >
+          <span className={cn(
+            "w-1.5 h-1.5 rounded-full",
+            light ? "bg-gold" : "bg-gold"
+          )} />
           {badge}
         </motion.span>
       )}
@@ -79,7 +85,7 @@ export function SectionHeader({
           transition={{ duration: 0.6, delay: 0.2 }}
           className={cn(
             "text-lg max-w-2xl mx-auto leading-relaxed",
-            light ? "text-white/50" : "text-body"
+            light ? "text-white/45" : "text-body"
           )}
         >
           {description}

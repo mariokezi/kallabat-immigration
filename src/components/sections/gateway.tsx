@@ -18,6 +18,7 @@ const paths = [
       "Worksite Compliance",
       "Industry-Specific Solutions",
     ],
+    glow: "rgba(13, 92, 143, 0.15)",
   },
   {
     title: "For Individuals",
@@ -31,6 +32,7 @@ const paths = [
       "Visa Consultations",
       "Status Adjustments",
     ],
+    glow: "rgba(201, 168, 76, 0.12)",
   },
 ];
 
@@ -49,12 +51,15 @@ export function Gateway() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.12, duration: 0.6 }}
+            transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -6 }}
           >
             <Link href={path.href} className="group block h-full">
-              <div className="relative h-full p-8 md:p-10 rounded-xl border border-border/60 bg-white hover:border-navy/20 hover:shadow-lg transition-all duration-300">
+              <div className="relative h-full p-8 md:p-10 rounded-2xl border border-border/60 bg-white transition-all duration-300 overflow-hidden group-hover:shadow-[0_20px_50px_-15px] group-hover:border-navy/15"
+                style={{ "--tw-shadow-color": path.glow } as React.CSSProperties}
+              >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-navy/[0.04] flex items-center justify-center group-hover:bg-navy/[0.08] transition-colors duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-navy/[0.05] flex items-center justify-center group-hover:bg-navy/[0.08] transition-colors duration-300">
                     <path.icon className="w-5 h-5 text-navy" />
                   </div>
                   <h3 className="text-2xl font-bold text-dark">
@@ -68,11 +73,8 @@ export function Gateway() {
 
                 <ul className="space-y-3 mb-8">
                   {path.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-3 text-sm"
-                    >
-                      <div className="w-1 h-1 rounded-full bg-navy/40 shrink-0" />
+                    <li key={feature} className="flex items-center gap-3 text-sm">
+                      <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
                       <span className="text-dark/80">{feature}</span>
                     </li>
                   ))}

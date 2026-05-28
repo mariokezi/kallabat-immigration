@@ -31,12 +31,13 @@ export function ServicesGrid() {
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4 }}
             >
               <Link href={service.href} className="group block h-full">
-                <div className="h-full p-8 rounded-xl border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300">
+                <div className="h-full p-8 rounded-2xl glass hover:bg-white/[0.07] transition-all duration-300 group-hover:shadow-[0_0_40px_rgba(201,168,76,0.08)]">
                   <div className="flex items-start gap-5">
-                    <div className="w-12 h-12 rounded-lg bg-white/[0.06] flex items-center justify-center shrink-0 group-hover:bg-white/[0.1] transition-colors duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 text-gold" />
                     </div>
                     <div>
