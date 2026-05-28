@@ -1,0 +1,198 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Clock, Mail, ArrowUpRight } from "lucide-react";
+import { siteConfig } from "@/data/site";
+import { Button } from "@/components/ui/button";
+
+const footerLinks = {
+  "For Employers": [
+    { label: "Work Visas", href: "/work-visas" },
+    { label: "Green Cards & PERM", href: "/green-cards" },
+    { label: "Industries", href: "/industries" },
+    { label: "Employer Forms", href: "/forms" },
+  ],
+  "For Individuals": [
+    { label: "Family Immigration", href: "/family-immigration" },
+    { label: "Citizenship", href: "/citizenship" },
+    { label: "FAQs", href: "/faqs" },
+  ],
+  "Our Firm": [
+    { label: "About Us", href: "/about" },
+    { label: "Attorney Profiles", href: "/attorneys" },
+    { label: "Contact", href: "/contact" },
+  ],
+};
+
+const badges = ["AILA Member", "AV Preeminent", "Super Lawyers"];
+
+export function Footer() {
+  return (
+    <footer className="bg-navy-deep text-white relative overflow-hidden">
+      {/* Grain overlay */}
+      <div className="grain absolute inset-0" />
+
+      {/* Subtle grid */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="footer-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="0.3" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#footer-grid)" />
+        </svg>
+      </div>
+
+      {/* CTA Band */}
+      <div className="relative border-b border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/[0.08] border border-gold/[0.15] text-gold text-sm font-medium mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+              Get Started Today
+            </span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-display text-4xl md:text-5xl font-semibold mb-5"
+          >
+            Ready to Discuss Your<br className="hidden sm:block" />
+            Immigration Needs?
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-white/40 text-lg mb-10 max-w-xl mx-auto"
+          >
+            Schedule a consultation with one of our experienced immigration attorneys today.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Link href="/contact">
+              <Button variant="gold" size="lg">
+                Schedule Consultation
+                <ArrowUpRight className="w-4 h-4" />
+              </Button>
+            </Link>
+            <a href={`tel:${siteConfig.phone.replace(/[^\d]/g, "")}`}>
+              <Button variant="outline" size="lg">
+                <Phone className="w-4 h-4" />
+                Call {siteConfig.phone}
+              </Button>
+            </a>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Main footer */}
+      <div className="relative max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+          {/* Brand column */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-gold/[0.1] border border-gold/[0.15] flex items-center justify-center">
+                <span className="text-gold font-display font-bold text-xl">K</span>
+              </div>
+              <div>
+                <span className="font-display font-semibold text-xl block leading-tight">
+                  Kallabat Law
+                </span>
+                <span className="text-white/30 text-[11px] tracking-[0.15em] uppercase">
+                  Immigration Attorneys
+                </span>
+              </div>
+            </div>
+            <p className="text-white/35 text-sm mb-8 max-w-sm leading-relaxed">
+              {siteConfig.description}
+            </p>
+            <div className="space-y-3.5 text-sm">
+              <div className="flex items-start gap-3 text-white/50 hover:text-white/70 transition-colors">
+                <MapPin className="w-4 h-4 mt-0.5 text-gold/60 shrink-0" />
+                <span>{siteConfig.address.full}</span>
+              </div>
+              <div className="flex items-center gap-3 text-white/50 hover:text-white/70 transition-colors">
+                <Phone className="w-4 h-4 text-gold/60 shrink-0" />
+                <a href={`tel:${siteConfig.phone.replace(/[^\d]/g, "")}`}>
+                  {siteConfig.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-white/50 hover:text-white/70 transition-colors">
+                <Mail className="w-4 h-4 text-gold/60 shrink-0" />
+                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+              </div>
+              <div className="flex items-start gap-3 text-white/50">
+                <Clock className="w-4 h-4 mt-0.5 text-gold/60 shrink-0" />
+                <div>
+                  <p>Mon - Thu: 9AM - 6PM</p>
+                  <p>Friday: 9AM - 5PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Link columns */}
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title}>
+              <h3 className="font-display font-semibold text-white/80 text-lg mb-5">{title}</h3>
+              <ul className="space-y-3">
+                {links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/35 hover:text-gold transition-colors duration-300"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Badges */}
+        <div className="flex flex-wrap gap-3 mt-14 pt-8 border-t border-white/[0.06]">
+          {badges.map((badge) => (
+            <span
+              key={badge}
+              className="px-4 py-2 rounded-full text-xs font-medium bg-gold/[0.05] border border-gold/[0.1] text-gold/80 tracking-wide"
+            >
+              {badge}
+            </span>
+          ))}
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-8 pt-8 border-t border-white/[0.04] flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/25 tracking-wide">
+          <p>
+            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            <Link href="/faqs" className="hover:text-white/50 transition-colors duration-300">
+              FAQs
+            </Link>
+            <Link href="/contact" className="hover:text-white/50 transition-colors duration-300">
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
