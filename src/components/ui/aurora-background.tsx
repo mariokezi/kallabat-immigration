@@ -16,31 +16,48 @@ export const AuroraBackground = ({
   return (
     <div
       className={cn(
-        "relative flex flex-col min-h-[92vh] items-center justify-center bg-white text-slate-950 transition-bg",
+        "relative flex flex-col min-h-[92vh] items-center justify-center bg-white text-slate-950",
         className
       )}
       {...props}
     >
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className={cn(
-            `
-            [--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
-            [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)]
-            [background-image:var(--white-gradient),var(--aurora)]
-            [background-size:300%,_200%]
-            [background-position:50%_50%,50%_50%]
-            filter blur-[10px] invert-0
-            after:content-[""] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)]
-            after:[background-size:200%,_100%]
-            after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
-            pointer-events-none
-            absolute -inset-[10px] opacity-50 will-change-transform`,
-
-            showRadialGradient &&
-              `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
-          )}
-        ></div>
+          className="pointer-events-none absolute will-change-transform"
+          style={{
+            inset: "-10px",
+            opacity: 0.4,
+            filter: "blur(10px)",
+            backgroundImage: [
+              "repeating-linear-gradient(100deg, #FFFFFF 0%, #FFFFFF 7%, transparent 10%, transparent 12%, #FFFFFF 16%)",
+              "repeating-linear-gradient(100deg, #0D5C8F 10%, #93A7D1 15%, #7EB4D8 20%, #C4B5FD 25%, #4A90BF 30%)",
+            ].join(", "),
+            backgroundSize: "300% 100%, 200% 100%",
+            backgroundPosition: "50% 50%, 50% 50%",
+            ...(showRadialGradient
+              ? {
+                  maskImage:
+                    "radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%)",
+                  WebkitMaskImage:
+                    "radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%)",
+                }
+              : {}),
+          }}
+        >
+          {/* After pseudo-element via a real div */}
+          <div
+            className="absolute inset-0 animate-aurora"
+            style={{
+              backgroundImage: [
+                "repeating-linear-gradient(100deg, #FFFFFF 0%, #FFFFFF 7%, transparent 10%, transparent 12%, #FFFFFF 16%)",
+                "repeating-linear-gradient(100deg, #0D5C8F 10%, #93A7D1 15%, #7EB4D8 20%, #C4B5FD 25%, #4A90BF 30%)",
+              ].join(", "),
+              backgroundSize: "200% 100%, 100% 100%",
+              backgroundAttachment: "fixed",
+              mixBlendMode: "difference",
+            }}
+          />
+        </div>
       </div>
       {children}
     </div>
