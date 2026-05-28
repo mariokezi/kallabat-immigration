@@ -52,19 +52,19 @@ export function WhyKallabat() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -4 }}
-            className="group relative p-8 rounded-2xl border border-border/50 bg-white hover:border-navy/15 hover:shadow-[0_16px_48px_-12px_rgba(10,37,64,0.12)] transition-all duration-300 overflow-hidden"
+            className="group relative p-8 rounded-2xl border border-border/50 bg-white hover:border-blue/20 hover:shadow-[0_16px_48px_-12px_rgba(13,92,143,0.10)] transition-all duration-300 overflow-hidden"
           >
             {/* Number watermark */}
-            <span className="absolute top-4 right-6 text-7xl font-bold text-navy/[0.03] group-hover:text-gold/[0.06] transition-colors duration-500 select-none">
+            <span className="absolute top-4 right-6 text-7xl font-bold text-navy/[0.03] group-hover:text-blue/[0.06] transition-colors duration-500 select-none">
               {item.number}
             </span>
 
             <div className="relative flex gap-5">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-navy to-blue flex items-center justify-center shrink-0 shadow-lg shadow-navy/15">
+              <div className="w-12 h-12 rounded-xl bg-navy flex items-center justify-center shrink-0 shadow-lg shadow-navy/15">
                 <item.icon className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-dark mb-2">
+                <h3 className="text-lg font-bold text-navy mb-2">
                   {item.title}
                 </h3>
                 <p className="text-body/80 leading-relaxed text-sm">{item.description}</p>

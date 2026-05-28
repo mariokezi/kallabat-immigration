@@ -26,7 +26,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function IndustriesSection() {
   return (
-    <Section className="bg-white">
+    <Section className="bg-blue-50">
       <SectionHeader
         badge="Industries We Serve"
         title="Deep Expertise Across Key Sectors"
@@ -43,12 +43,12 @@ export function IndustriesSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className="group p-6 rounded-2xl border border-border/50 bg-warm-white hover:bg-white hover:border-navy/15 hover:shadow-[0_12px_40px_-10px_rgba(10,37,64,0.10)] transition-all duration-300"
+              className="group p-6 rounded-2xl border border-border/40 bg-white hover:border-blue/20 hover:shadow-[0_12px_40px_-10px_rgba(13,92,143,0.10)] transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-navy/[0.05] flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-navy/10 group-hover:to-blue/10 transition-all duration-300">
-                <Icon className="w-5 h-5 text-navy/70" />
+              <div className="w-10 h-10 rounded-lg bg-blue/[0.06] flex items-center justify-center mb-4 group-hover:bg-blue/[0.10] transition-colors duration-300">
+                <Icon className="w-5 h-5 text-blue" />
               </div>
-              <h3 className="text-lg font-bold text-dark mb-2">
+              <h3 className="text-lg font-bold text-navy mb-2">
                 {industry.name}
               </h3>
               <p className="text-sm text-body/80 leading-relaxed">
@@ -67,7 +67,7 @@ export function IndustriesSection() {
       >
         <Link
           href="/industries"
-          className="inline-flex items-center gap-2 text-navy font-semibold text-sm hover:gap-3 transition-all duration-300"
+          className="inline-flex items-center gap-2 text-blue font-semibold text-sm hover:gap-3 transition-all duration-300"
         >
           View All Industries &rarr;
         </Link>

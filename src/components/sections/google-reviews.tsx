@@ -49,19 +49,19 @@ function Stars({ count }: { count: number }) {
 
 function ReviewCard({ review }: { review: typeof reviews[0] }) {
   return (
-    <div className="w-[360px] shrink-0 p-6 rounded-2xl border border-border/50 bg-white hover:shadow-[0_12px_40px_-10px_rgba(10,37,64,0.08)] hover:border-navy/10 transition-all duration-300 mx-2.5">
+    <div className="w-[360px] shrink-0 p-6 rounded-2xl border border-border/50 bg-white hover:shadow-[0_12px_40px_-10px_rgba(13,92,143,0.08)] hover:border-blue/15 transition-all duration-300 mx-2.5">
       <Stars count={review.rating} />
       <p className="text-dark/80 mt-4 mb-5 leading-relaxed text-sm">
         &ldquo;{review.text}&rdquo;
       </p>
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-navy to-blue flex items-center justify-center">
+        <div className="w-8 h-8 rounded-full bg-navy flex items-center justify-center">
           <span className="text-xs font-bold text-white">
             {review.name.charAt(0)}
           </span>
         </div>
         <div>
-          <span className="text-sm font-semibold text-dark block">
+          <span className="text-sm font-semibold text-navy block">
             {review.name}
           </span>
           <span className="text-xs text-body/60">Verified Review</span>
@@ -75,7 +75,7 @@ export function GoogleReviews() {
   const allReviews = [...reviews, ...reviews];
 
   return (
-    <Section className="bg-white !px-0">
+    <Section className="!px-0">
       <div className="px-6">
         <SectionHeader
           badge="Client Reviews"
@@ -91,7 +91,7 @@ export function GoogleReviews() {
           className="flex flex-col items-center mb-14"
         >
           <div className="flex items-center gap-4 mb-3">
-            <span className="text-5xl font-bold text-dark">4.9</span>
+            <span className="text-5xl font-bold text-navy">4.9</span>
             <div>
               <Stars count={5} />
               <span className="text-sm text-body/60 mt-1 block">601+ Reviews on Google</span>
@@ -101,7 +101,7 @@ export function GoogleReviews() {
             href="https://www.google.com/maps/place/Joseph+Kallabat+%26+Associates,+P.C."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-navy hover:text-blue font-medium mt-2 transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 text-sm text-blue hover:text-navy font-medium mt-2 transition-colors duration-200"
           >
             See All Reviews on Google
             <ExternalLink className="w-3.5 h-3.5" />

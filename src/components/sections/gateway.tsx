@@ -18,7 +18,6 @@ const paths = [
       "Worksite Compliance",
       "Industry-Specific Solutions",
     ],
-    glow: "rgba(13, 92, 143, 0.15)",
   },
   {
     title: "For Individuals",
@@ -32,13 +31,12 @@ const paths = [
       "Visa Consultations",
       "Status Adjustments",
     ],
-    glow: "rgba(201, 168, 76, 0.12)",
   },
 ];
 
 export function Gateway() {
   return (
-    <Section>
+    <Section className="bg-blue-50">
       <SectionHeader
         badge="How Can We Help?"
         title="Immigration Solutions Tailored to You"
@@ -55,14 +53,12 @@ export function Gateway() {
             whileHover={{ y: -6 }}
           >
             <Link href={path.href} className="group block h-full">
-              <div className="relative h-full p-8 md:p-10 rounded-2xl border border-border/60 bg-white transition-all duration-300 overflow-hidden group-hover:shadow-[0_20px_50px_-15px] group-hover:border-navy/15"
-                style={{ "--tw-shadow-color": path.glow } as React.CSSProperties}
-              >
+              <div className="relative h-full p-8 md:p-10 rounded-2xl border border-border/60 bg-white transition-all duration-300 overflow-hidden group-hover:shadow-[0_20px_50px_-15px_rgba(13,92,143,0.12)] group-hover:border-blue/20">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-navy/[0.05] flex items-center justify-center group-hover:bg-navy/[0.08] transition-colors duration-300">
-                    <path.icon className="w-5 h-5 text-navy" />
+                  <div className="w-12 h-12 rounded-xl bg-blue/[0.06] flex items-center justify-center group-hover:bg-blue/[0.10] transition-colors duration-300">
+                    <path.icon className="w-5 h-5 text-blue" />
                   </div>
-                  <h3 className="text-2xl font-bold text-dark">
+                  <h3 className="text-2xl font-bold text-navy">
                     {path.title}
                   </h3>
                 </div>
@@ -74,13 +70,13 @@ export function Gateway() {
                 <ul className="space-y-3 mb-8">
                   {path.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-3 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue shrink-0" />
                       <span className="text-dark/80">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="flex items-center gap-2 text-navy font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                <div className="flex items-center gap-2 text-blue font-semibold text-sm group-hover:gap-3 transition-all duration-300">
                   Learn More
                   <ArrowRight className="w-4 h-4" />
                 </div>

@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig, navLinks } from "@/data/site";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/logo";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,7 +34,7 @@ export function Navbar() {
   return (
     <>
       {/* Top bar */}
-      <div className="bg-navy-deep text-white/60 text-xs py-2 px-6 hidden md:block border-b border-white/[0.05]">
+      <div className="bg-navy text-white/60 text-xs py-2 px-6 hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <span>{siteConfig.address.full}</span>
           <div className="flex items-center gap-5">
@@ -57,7 +57,7 @@ export function Navbar() {
           "sticky top-0 z-50 transition-all duration-300",
           scrolled
             ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border/50"
-            : "bg-navy-deep/95 backdrop-blur-sm border-b border-white/[0.05]"
+            : "bg-white/80 backdrop-blur-sm border-b border-border/30"
         )}
       >
         <div className={cn(
@@ -66,24 +66,12 @@ export function Navbar() {
         )}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo.jpg"
-              alt="Joseph Kallabat & Associates"
-              width={40}
-              height={40}
-              className="rounded"
-            />
+            <Logo size={36} variant="dark" />
             <div className="hidden sm:block">
-              <span className={cn(
-                "font-bold text-lg leading-tight block transition-colors duration-300",
-                scrolled ? "text-navy" : "text-white"
-              )}>
+              <span className="font-bold text-lg leading-tight block text-navy">
                 Kallabat Law
               </span>
-              <span className={cn(
-                "text-[10px] tracking-[0.12em] uppercase leading-tight transition-colors duration-300",
-                scrolled ? "text-body/60" : "text-white/40"
-              )}>
+              <span className="text-[10px] tracking-[0.12em] uppercase leading-tight text-body/50">
                 Immigration Attorneys
               </span>
             </div>
@@ -102,12 +90,7 @@ export function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={cn(
-                    "px-3.5 py-2 rounded-md text-sm font-medium transition-colors duration-200",
-                    scrolled
-                      ? "text-dark/70 hover:text-navy hover:bg-navy/[0.04]"
-                      : "text-white/60 hover:text-white hover:bg-white/[0.06]"
-                  )}
+                  className="px-3.5 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-dark/70 hover:text-navy hover:bg-blue-50"
                 >
                   <span className="flex items-center gap-1">
                     {link.label}
@@ -130,23 +113,13 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.15 }}
-                      className={cn(
-                        "absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl p-1.5",
-                        scrolled
-                          ? "bg-white border border-border/60"
-                          : "bg-navy border border-white/[0.08]"
-                      )}
+                      className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl p-1.5 bg-white border border-border/60"
                     >
                       {link.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className={cn(
-                            "block px-3.5 py-2.5 rounded-md text-sm transition-colors duration-150",
-                            scrolled
-                              ? "text-body hover:text-navy hover:bg-blue-light/50"
-                              : "text-white/60 hover:text-white hover:bg-white/[0.06]"
-                          )}
+                          className="block px-3.5 py-2.5 rounded-md text-sm transition-colors duration-150 text-body hover:text-navy hover:bg-blue-50"
                         >
                           {child.label}
                         </Link>
@@ -161,18 +134,13 @@ export function Navbar() {
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
             <Link href="/contact" className="hidden md:block">
-              <Button size="sm" variant={scrolled ? "primary" : "gold"}>
+              <Button size="sm" variant="primary">
                 Schedule Consultation
               </Button>
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={cn(
-                "lg:hidden p-2 rounded-md transition-colors",
-                scrolled
-                  ? "hover:bg-navy/[0.04] text-dark"
-                  : "hover:bg-white/[0.06] text-white"
-              )}
+              className="lg:hidden p-2 rounded-md transition-colors hover:bg-blue-50 text-dark"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -189,7 +157,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 220 }}
-            className="fixed inset-0 top-[calc(4rem+1px)] z-40 bg-navy-deep overflow-y-auto lg:hidden"
+            className="fixed inset-0 top-[calc(4rem+1px)] z-40 bg-white overflow-y-auto lg:hidden"
           >
             <nav className="p-6 space-y-1">
               {navLinks.map((link, i) => (
@@ -202,7 +170,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 rounded-lg text-lg font-medium text-white/80 hover:text-white hover:bg-white/[0.04] transition-colors"
+                    className="block px-4 py-3 rounded-lg text-lg font-medium text-dark hover:text-navy hover:bg-blue-50 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -213,7 +181,7 @@ export function Navbar() {
                           key={child.href}
                           href={child.href}
                           onClick={() => setMobileOpen(false)}
-                          className="block px-4 py-2 rounded-md text-sm text-white/40 hover:text-white/70 hover:bg-white/[0.04] transition-colors"
+                          className="block px-4 py-2 rounded-md text-sm text-body hover:text-navy hover:bg-blue-50 transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -224,13 +192,13 @@ export function Navbar() {
               ))}
               <div className="pt-6 space-y-3">
                 <Link href="/contact" onClick={() => setMobileOpen(false)}>
-                  <Button variant="gold" className="w-full" size="lg">
+                  <Button variant="primary" className="w-full" size="lg">
                     Schedule Consultation
                   </Button>
                 </Link>
                 <a
                   href={`tel:${siteConfig.phone.replace(/[^\d]/g, "")}`}
-                  className="flex items-center justify-center gap-2 py-3 text-white/70 font-medium"
+                  className="flex items-center justify-center gap-2 py-3 text-navy font-medium"
                 >
                   <Phone className="w-4 h-4" />
                   {siteConfig.phone}

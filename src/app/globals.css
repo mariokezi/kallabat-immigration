@@ -5,6 +5,7 @@
   --navy-deep: #061727;
   --blue: #0D5C8F;
   --blue-light: #E8F1F8;
+  --blue-50: #F0F7FC;
   --gold: #C9A84C;
   --gold-light: #E8D9A0;
   --warm-white: #FAFBFC;
@@ -13,6 +14,15 @@
   --body: #4A5568;
   --success: #10B981;
   --border: #E2E8F0;
+  --transparent: transparent;
+  --black: #000000;
+
+  /* Tailwind color vars needed by aurora component */
+  --blue-500: #0D5C8F;
+  --indigo-300: #93A7D1;
+  --blue-300: #7EB4D8;
+  --violet-200: #C4B5FD;
+  --blue-400: #4A90BF;
 }
 
 @theme inline {
@@ -20,6 +30,7 @@
   --color-navy-deep: var(--navy-deep);
   --color-blue: var(--blue);
   --color-blue-light: var(--blue-light);
+  --color-blue-50: var(--blue-50);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-warm-white: var(--warm-white);
@@ -28,6 +39,16 @@
   --color-success: var(--success);
   --color-border: var(--border);
   --font-sans: var(--font-inter);
+  --animate-aurora: aurora 60s linear infinite;
+}
+
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
 }
 
 * {
@@ -44,7 +65,7 @@
 }
 
 body {
-  background: var(--warm-white);
+  background: var(--white);
   color: var(--body);
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,61 +73,8 @@ body {
 }
 
 ::selection {
-  background: var(--navy);
+  background: var(--blue);
   color: white;
-}
-
-/* Noise / grain texture */
-.grain {
-  position: relative;
-}
-
-.grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Glass cards */
-.glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold), #B08A30);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Aurora glow animation */
-@keyframes aurora {
-  0% { background-position: 50% 50%; }
-  50% { background-position: 150% 50%; }
-  100% { background-position: 50% 50%; }
-}
-
-.aurora {
-  background: repeating-linear-gradient(
-    100deg,
-    rgba(13, 92, 143, 0.12) 0%,
-    rgba(201, 168, 76, 0.06) 15%,
-    rgba(13, 92, 143, 0.08) 30%,
-    rgba(201, 168, 76, 0.04) 45%,
-    rgba(13, 92, 143, 0.12) 60%
-  );
-  background-size: 300% 100%;
-  animation: aurora 15s linear infinite;
-  mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 70%);
 }
 
 /* Marquee */

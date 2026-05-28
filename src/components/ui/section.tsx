@@ -21,7 +21,7 @@ export function Section({ children, className, id, dark }: SectionProps) {
       transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
       className={cn(
         "relative py-24 md:py-32 px-6 overflow-hidden",
-        dark ? "bg-navy-deep text-white grain" : "bg-warm-white",
+        dark ? "bg-navy text-white" : "bg-white",
         className
       )}
     >
@@ -55,12 +55,12 @@ export function SectionHeader({
             "inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.15em] mb-6 border",
             light
               ? "border-white/[0.08] text-white/50 bg-white/[0.04]"
-              : "border-navy/10 text-navy bg-navy/[0.04]"
+              : "border-blue/15 text-blue bg-blue-50"
           )}
         >
           <span className={cn(
             "w-1.5 h-1.5 rounded-full",
-            light ? "bg-gold" : "bg-gold"
+            light ? "bg-blue-light" : "bg-blue"
           )} />
           {badge}
         </motion.span>
@@ -72,7 +72,7 @@ export function SectionHeader({
         transition={{ duration: 0.6, delay: 0.1 }}
         className={cn(
           "text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5",
-          light ? "text-white" : "text-dark"
+          light ? "text-white" : "text-navy"
         )}
       >
         {title}

@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Clock, Mail, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/logo";
 
 const footerLinks = {
   "For Employers": [
@@ -30,7 +30,7 @@ const badges = ["AILA Member", "AV Preeminent", "Super Lawyers"];
 
 export function Footer() {
   return (
-    <footer className="bg-navy-deep text-white grain">
+    <footer className="bg-navy text-white">
       {/* CTA Band */}
       <div className="border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
@@ -50,7 +50,7 @@ export function Footer() {
             className="text-3xl md:text-4xl font-bold mb-5"
           >
             Ready to Discuss Your{" "}
-            <span className="text-gold">Immigration Needs?</span>
+            <span className="text-blue-light">Immigration Needs?</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -90,13 +90,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <Image
-                src="/logo.jpg"
-                alt="Kallabat Law"
-                width={40}
-                height={40}
-                className="rounded"
-              />
+              <Logo size={36} variant="light" />
               <div>
                 <span className="font-bold text-lg block leading-tight">
                   Kallabat Law
