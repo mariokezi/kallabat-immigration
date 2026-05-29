@@ -95,8 +95,9 @@ export function Hero() {
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-navy max-w-4xl">
                   <span>Leaders in Global</span>
                   <AnimatedWords
-                    words={["Immigration", "Talent Mobility", "Workforce Solutions", "Visa Strategy"]}
+                    words={["Immigration", "Talent Mobility", "Visa Strategy", "Workforce Solutions"]}
                     className="text-blue"
+                    centered
                   />
                 </h1>
               </motion.div>
@@ -166,8 +167,8 @@ export function Hero() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-navy/8 border border-border/40">
               <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=500&fit=crop&crop=center"
-                alt="Diverse professional team collaborating in modern office"
+                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=500&fit=crop&crop=center"
+                alt="Professional attorneys consulting with clients in modern office"
                 width={1200}
                 height={500}
                 className="w-full h-[280px] md:h-[380px] object-cover"

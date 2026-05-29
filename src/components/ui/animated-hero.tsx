@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 export function AnimatedWords({
   words,
   className,
+  centered = false,
 }: {
   words: string[];
   className?: string;
+  centered?: boolean;
 }) {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(() => words, [words]);
@@ -25,7 +27,12 @@ export function AnimatedWords({
   }, [titleNumber, titles]);
 
   return (
-    <span className="relative flex w-full justify-start overflow-hidden md:pb-4 md:pt-1">
+    <span
+      className={`relative flex w-full overflow-hidden pb-2 pt-1 ${
+        centered ? "justify-center" : "justify-start"
+      }`}
+      style={{ minHeight: "1.3em" }}
+    >
       &nbsp;
       {titles.map((title, index) => (
         <motion.span

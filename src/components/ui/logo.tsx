@@ -6,110 +6,55 @@ export function Logo({
   className,
   size = 40,
   variant = "dark",
-  full = false,
 }: {
   className?: string;
   size?: number;
   variant?: "dark" | "light";
-  full?: boolean;
 }) {
-  const primary = variant === "dark" ? "#0A2540" : "#FFFFFF";
-  const accent = variant === "dark" ? "#0D5C8F" : "#93C5E8";
+  // Match the original logo: dark steel blue #3D5A80
+  const fill = variant === "dark" ? "#3D5A80" : "#FFFFFF";
 
-  if (!full) {
-    // Compact JK monogram for navbar
-    return (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className={cn("shrink-0", className)}
-        aria-label="Kallabat Law"
-      >
-        {/* J */}
-        <path
-          d="M18 16H30V68C30 78 26 85 20 89C15 92 9 94 3 94V86C8 86 12 84 15 81C19 77 20 72 20 66V16"
-          fill={primary}
-          strokeWidth="0"
-        />
-        {/* J serif */}
-        <rect x="14" y="14" width="20" height="4" rx="0.5" fill={primary} />
-
-        {/* K */}
-        <path
-          d="M46 16H58V52L82 16H94L68 54L96 92H84L60 58L58 61V92H46V16Z"
-          fill={primary}
-          strokeWidth="0"
-        />
-        {/* K serif */}
-        <rect x="42" y="14" width="20" height="4" rx="0.5" fill={primary} />
-        <rect x="78" y="14" width="20" height="4" rx="0.5" fill={primary} />
-
-        {/* Accent underline */}
-        <rect x="14" y="96" width="84" height="2.5" rx="1.25" fill={accent} opacity="0.5" />
-      </svg>
-    );
-  }
-
-  // Full logo with text
   return (
     <svg
-      width={size * 2.8}
+      width={size}
       height={size}
-      viewBox="0 0 280 100"
+      viewBox="0 0 120 120"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={cn("shrink-0", className)}
-      aria-label="Joseph Kallabat & Associates, P.C."
+      aria-label="JK — Joseph Kallabat & Associates"
     >
-      {/* J */}
+      {/*
+        Faithful recreation of the original JK monogram:
+        - Large serif J and K that overlap in the center
+        - J has a curved descender tail going left
+        - K has diagonal arms meeting at the stem
+        - Letters interlock/share the center vertical space
+      */}
+
+      {/* J — serif letter with curved tail */}
       <path
-        d="M10 10H22V58C22 68 19 74 14 78C10 81 5 82 0 82V76C4 76 7 74 10 72C13 68 14 64 14 58V10"
-        fill={primary}
+        d="M20 12 L20 16 L28 16 L28 14 L42 14 L42 16 L34 16 L34 72
+           C34 84 30 92 22 97 C16 101 8 103 2 103 L2 95
+           C7 95 13 93 17 89 C22 84 24 78 24 70 L24 16 L20 16 L20 12
+           L42 12 L42 16"
+        fill={fill}
       />
-      <rect x="6" y="8" width="20" height="3.5" fill={primary} />
 
-      {/* K */}
+      {/* K — serif letter with diagonal strokes, overlapping with J */}
       <path
-        d="M36 10H48V42L68 10H78L56 44L80 80H70L50 48L48 51V80H36V10Z"
-        fill={primary}
+        d="M52 12 L52 16 L58 16 L58 14 L72 14 L72 16 L66 16 L66 54
+           L92 16 L86 16 L86 14 L112 14 L112 16 L104 16
+           L78 52 L108 98 L114 98 L114 102 L86 102 L86 98
+           L96 98 L70 58 L66 63 L66 98 L72 98 L72 102
+           L52 102 L52 98 L58 98 L58 16 L52 16 L52 12
+           L72 12 L72 16"
+        fill={fill}
       />
-      <rect x="32" y="8" width="20" height="3.5" fill={primary} />
-      <rect x="64" y="8" width="18" height="3.5" fill={primary} />
-
-      {/* Divider */}
-      <rect x="96" y="18" width="1.5" height="52" rx="0.75" fill={accent} opacity="0.3" />
-
-      {/* JOSEPH KALLABAT */}
-      <text
-        x="110"
-        y="38"
-        fill={primary}
-        fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="15"
-        fontWeight="700"
-        letterSpacing="2.5"
-      >
-        JOSEPH KALLABAT
-      </text>
-
-      {/* & Associates, P.C. */}
-      <text
-        x="110"
-        y="58"
-        fill={variant === "dark" ? "#4A5568" : "rgba(255,255,255,0.6)"}
-        fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="11.5"
-        fontWeight="400"
-        letterSpacing="1.5"
-      >
-        &amp; Associates, P.C.
-      </text>
-
-      {/* Accent line under text */}
-      <rect x="110" y="66" width="60" height="1.5" rx="0.75" fill={accent} opacity="0.4" />
+      <path
+        d="M86 12 L112 12 L112 16 L86 16 Z"
+        fill={fill}
+      />
     </svg>
   );
 }

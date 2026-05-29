@@ -54,10 +54,10 @@ export function Navbar() {
       {/* Main nav */}
       <header
         className={cn(
-          "sticky top-0 z-50 transition-all duration-300",
+          "sticky top-0 z-50 transition-all duration-300 bg-white border-b",
           scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border/50"
-            : "bg-white/80 backdrop-blur-sm border-b border-border/30"
+            ? "shadow-sm border-border/50"
+            : "border-border/20"
         )}
       >
         <div className={cn(
@@ -66,7 +66,7 @@ export function Navbar() {
         )}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
-            <Logo size={38} variant="dark" />
+            <Logo size={36} variant="dark" />
             <div className="hidden sm:block leading-tight">
               <span className="font-bold text-[17px] text-navy block">
                 Kallabat Law
@@ -78,7 +78,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <div
                 key={link.label}
@@ -90,7 +90,11 @@ export function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className="px-3.5 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-dark/70 hover:text-navy hover:bg-blue-50"
+                  className={cn(
+                    "px-3.5 py-2 rounded-md text-sm font-medium transition-colors duration-150",
+                    "text-body hover:text-navy",
+                    activeDropdown === link.label && "text-navy"
+                  )}
                 >
                   <span className="flex items-center gap-1">
                     {link.label}
@@ -109,17 +113,17 @@ export function Navbar() {
                 <AnimatePresence>
                   {link.children && activeDropdown === link.label && (
                     <motion.div
-                      initial={{ opacity: 0, y: 8 }}
+                      initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-xl p-1.5 bg-white border border-border/60"
+                      exit={{ opacity: 0, y: 6 }}
+                      transition={{ duration: 0.12 }}
+                      className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-lg shadow-navy/5 p-1.5 bg-white border border-border/60"
                     >
                       {link.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-3.5 py-2.5 rounded-md text-sm transition-colors duration-150 text-body hover:text-navy hover:bg-blue-50"
+                          className="block px-3.5 py-2.5 rounded-md text-sm text-body hover:text-navy hover:bg-gray-50 transition-colors duration-100"
                         >
                           {child.label}
                         </Link>
@@ -140,7 +144,7 @@ export function Navbar() {
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 rounded-md transition-colors hover:bg-blue-50 text-dark"
+              className="lg:hidden p-2 rounded-md transition-colors hover:bg-gray-50 text-dark"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -170,7 +174,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 rounded-lg text-lg font-medium text-dark hover:text-navy hover:bg-blue-50 transition-colors"
+                    className="block px-4 py-3 rounded-lg text-lg font-medium text-dark hover:text-navy hover:bg-gray-50 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -181,7 +185,7 @@ export function Navbar() {
                           key={child.href}
                           href={child.href}
                           onClick={() => setMobileOpen(false)}
-                          className="block px-4 py-2 rounded-md text-sm text-body hover:text-navy hover:bg-blue-50 transition-colors"
+                          className="block px-4 py-2 rounded-md text-sm text-body hover:text-navy hover:bg-gray-50 transition-colors"
                         >
                           {child.label}
                         </Link>

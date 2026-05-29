@@ -19,8 +19,8 @@ const paths = [
       "Worksite Compliance",
       "Industry-Specific Solutions",
     ],
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop",
-    imageAlt: "Diverse business team meeting in modern office",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
+    imageAlt: "Business professionals in a corporate meeting",
   },
   {
     title: "For Individuals",
@@ -34,8 +34,8 @@ const paths = [
       "Visa Consultations",
       "Status Adjustments",
     ],
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop&crop=faces",
-    imageAlt: "Happy diverse family together",
+    image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop&crop=faces",
+    imageAlt: "Happy family smiling together outdoors",
   },
 ];
 
