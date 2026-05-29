@@ -62,17 +62,17 @@ export function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
-          {/* Logo only on mobile, logo + bubble name on desktop */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
+          {/* Logo + bubble name */}
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
             <Image
               src="/logo.png"
               alt="Joseph Kallabat & Associates, P.C."
               width={200}
               height={60}
-              className="h-10 sm:h-12 w-auto object-contain"
+              className="h-9 sm:h-12 w-auto object-contain shrink-0"
               priority
             />
-            <span className="hidden lg:inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/[0.03] border border-navy/8 text-[13px] text-navy font-medium whitespace-nowrap">
+            <span className="inline-flex items-center px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-navy/[0.03] border border-navy/8 text-[11px] sm:text-[13px] text-navy font-medium whitespace-nowrap">
               Joseph Kallabat &amp; Associates, P.C.
             </span>
           </Link>
