@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+
 import {
   FileText,
   Users,
@@ -149,7 +149,7 @@ export function FormsContent() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.08, duration: 0.5 }}
             >
-              <Link href={`/forms/${card.slug}`} className="group block h-full">
+              <div className="group block h-full cursor-pointer">
                 <div className="relative h-full bg-white rounded-2xl border border-border p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-blue/30 overflow-hidden">
                   {/* Subtle gradient accent on hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-light/0 to-blue-light/0 group-hover:from-blue-light/40 group-hover:to-transparent transition-all duration-500 rounded-2xl" />
@@ -170,12 +170,12 @@ export function FormsContent() {
 
                     {/* CTA */}
                     <div className="flex items-center gap-2 text-blue text-sm font-medium">
-                      <span>Start Questionnaire</span>
+                      <span>Coming Soon</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>

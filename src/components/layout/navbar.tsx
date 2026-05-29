@@ -62,18 +62,23 @@ export function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
-          {/* Logo — bigger on mobile, with company name */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+          {/* Logo + firm name */}
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Image
               src="/logo.png"
               alt="Joseph Kallabat & Associates, P.C."
               width={200}
               height={60}
-              className="h-10 sm:h-12 w-auto object-contain"
+              className="h-9 sm:h-11 w-auto object-contain"
               priority
             />
-            <div className="sm:hidden leading-tight">
-              <span className="font-bold text-[14px] text-navy block">Kallabat Law</span>
+            <div className="leading-tight">
+              <span className="font-bold text-[13px] sm:text-[15px] text-navy block whitespace-nowrap">
+                Joseph Kallabat
+              </span>
+              <span className="text-[10px] sm:text-[11px] text-body/50 block -mt-0.5 whitespace-nowrap">
+                &amp; Associates, P.C.
+              </span>
             </div>
           </Link>
 

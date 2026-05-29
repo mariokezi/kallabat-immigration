@@ -202,10 +202,13 @@ export const navLinks = [
       { label: "Attorney Profiles", href: "/attorneys" },
     ],
   },
-  { label: "FAQs", href: "/faqs" },
   {
-    label: "Forms",
-    href: "/forms",
+    label: "Resources",
+    href: "/faqs",
+    children: [
+      { label: "FAQs", href: "/faqs" },
+      { label: "Forms & Questionnaires", href: "/forms" },
+    ],
   },
   { label: "Contact", href: "/contact" },
 ];
