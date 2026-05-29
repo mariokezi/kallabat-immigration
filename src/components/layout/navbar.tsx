@@ -65,13 +65,13 @@ export function Navbar() {
           scrolled ? "h-16" : "h-18"
         )}>
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <Logo size={36} variant="dark" />
-            <div className="hidden sm:block">
-              <span className="font-bold text-lg leading-tight block text-navy">
+          <Link href="/" className="flex items-center gap-2.5">
+            <Logo size={38} variant="dark" />
+            <div className="hidden sm:block leading-tight">
+              <span className="font-bold text-[17px] text-navy block">
                 Kallabat Law
               </span>
-              <span className="text-[10px] tracking-[0.12em] uppercase leading-tight text-body/50">
+              <span className="text-[10px] tracking-[0.1em] uppercase text-body/50 block -mt-0.5">
                 Immigration Attorneys
               </span>
             </div>

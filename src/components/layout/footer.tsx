@@ -89,13 +89,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <Logo size={36} variant="light" />
-              <div>
-                <span className="font-bold text-lg block leading-tight">
+            <div className="flex items-center gap-2.5 mb-6">
+              <Logo size={38} variant="light" />
+              <div className="leading-tight">
+                <span className="font-bold text-[17px] block">
                   Kallabat Law
                 </span>
-                <span className="text-white/30 text-[10px] tracking-[0.12em] uppercase">
+                <span className="text-white/30 text-[10px] tracking-[0.1em] uppercase block -mt-0.5">
                   Immigration Attorneys
                 </span>
               </div>
