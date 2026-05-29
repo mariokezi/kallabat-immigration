@@ -15,6 +15,7 @@ import {
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/site";
+import { submitQuestionnaire } from "@/app/actions/submit-form";
 
 const areasOfInterest = [
   "Work Visas",
@@ -77,14 +78,31 @@ export function ContactContent() {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setSending(true);
-    console.log("Contact form submission:", formState);
-    setTimeout(() => {
-      setSending(false);
+    try {
+      await submitQuestionnaire({
+        formType: "Contact Form",
+        fields: formState,
+        sections: [{
+          title: "Contact Information",
+          fieldNames: [
+            { name: "name", label: "Name" },
+            { name: "email", label: "Email" },
+            { name: "phone", label: "Phone" },
+            { name: "company", label: "Company" },
+            { name: "interest", label: "Area of Interest" },
+            { name: "message", label: "Message" },
+          ],
+        }],
+      });
       setSubmitted(true);
-    }, 1000);
+    } catch {
+      alert("Something went wrong. Please call us at (248) 865-3331.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (

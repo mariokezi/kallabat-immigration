@@ -193,7 +193,9 @@ function AccordionItem({ visa, isOpen, onToggle }: { visa: VisaType; isOpen: boo
       className="border border-border rounded-2xl bg-white overflow-hidden hover:border-blue/20 transition-colors"
     >
       <button
+        type="button"
         onClick={onToggle}
+        aria-expanded={isOpen}
         className="w-full flex items-center justify-between p-6 md:p-8 text-left cursor-pointer group"
       >
         <div className="flex-1 min-w-0 pr-4">

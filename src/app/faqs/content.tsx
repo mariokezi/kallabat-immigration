@@ -155,7 +155,9 @@ function AccordionItem({
   return (
     <div className="border border-border rounded-xl overflow-hidden bg-white transition-shadow hover:shadow-sm">
       <button
+        type="button"
         onClick={onToggle}
+        aria-expanded={isOpen}
         className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left cursor-pointer"
       >
         <span className="text-dark font-medium pr-4">{item.question}</span>
