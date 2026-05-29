@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, AlertCircle, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import emailjs from "@emailjs/browser";
+import { submitQuestionnaire } from "@/app/actions/submit-form";
 
 export interface FormField {
   name: string;
@@ -46,45 +46,17 @@ export function QuestionnaireForm({
     setStatus("sending");
 
     try {
-      // Format all fields into a readable email body
-      const lines = sections.flatMap((section) =>
-        [
-          `\n--- ${section.title} ---`,
-          ...section.fields.map(
-            (field) => `${field.label}: ${formData[field.name] || "N/A"}`
-          ),
-        ]
-      );
-
-      const emailBody = `Form Type: ${formType}\n${lines.join("\n")}`;
-
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_kallabat",
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_questionnaire",
-        {
-          form_type: formType,
-          message: emailBody,
-          from_name: formData.full_name || formData.company_name || "Website Submission",
-          from_email: formData.email || "noreply@kallabatlaw.com",
-          phone: formData.phone || "",
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ""
-      );
-
+      await submitQuestionnaire({
+        formType,
+        fields: formData,
+        sections: sections.map((s) => ({
+          title: s.title,
+          fieldNames: s.fields.map((f) => ({ name: f.name, label: f.label })),
+        })),
+      });
       setStatus("sent");
     } catch {
-      // Fallback: open mailto if EmailJS isn't configured
-      const subject = encodeURIComponent(`${formType} — Website Submission`);
-      const body = encodeURIComponent(
-        sections
-          .flatMap((s) => [
-            `\n--- ${s.title} ---`,
-            ...s.fields.map((f) => `${f.label}: ${formData[f.name] || "N/A"}`),
-          ])
-          .join("\n")
-      );
-      window.location.href = `mailto:info@kallabatlaw.com?subject=${subject}&body=${body}`;
-      setStatus("sent");
+      setStatus("error");
     }
   };
 
@@ -120,7 +92,7 @@ export function QuestionnaireForm({
         <p className="text-body max-w-2xl mx-auto text-sm sm:text-base">{description}</p>
         <div className="flex items-center justify-center gap-2 mt-4 text-xs text-body/50">
           <Lock className="w-3.5 h-3.5" />
-          <span>Secure &middot; Encrypted &middot; No data stored on our servers</span>
+          <span>Secure server-side submission &middot; No data stored &middot; Sent directly to our attorneys</span>
         </div>
       </div>
 
@@ -197,7 +169,7 @@ export function QuestionnaireForm({
           {status === "error" && (
             <div className="flex items-center gap-2 text-red-500 text-sm">
               <AlertCircle className="w-4 h-4" />
-              Something went wrong. Please try again.
+              Something went wrong. Please try again or call us directly.
             </div>
           )}
           <Button
@@ -210,8 +182,8 @@ export function QuestionnaireForm({
             {status === "sending" ? "Submitting..." : "Submit Questionnaire"}
             <Send className="w-4 h-4" />
           </Button>
-          <p className="text-xs text-body/40 text-center">
-            Your information is sent directly to our attorneys via encrypted email.
+          <p className="text-xs text-body/40 text-center max-w-md">
+            Your information is processed server-side and sent directly to our attorneys via encrypted email. Nothing is stored in any database.
           </p>
         </div>
       </form>

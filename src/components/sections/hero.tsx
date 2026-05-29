@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, PhoneCall, Star } from "lucide-react";
+import { ArrowRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedWords } from "@/components/ui/animated-hero";
 import { AuroraBackground } from "@/components/ui/aurora-background";
@@ -67,32 +67,17 @@ export function Hero() {
         <div className="relative z-10 w-full">
           <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-12 pb-14 sm:pt-20 sm:pb-24 md:pt-28 md:pb-32">
             <div className="flex flex-col items-center text-center">
-              {/* Firm name + trust badge */}
+              {/* Firm name badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="mb-6 sm:mb-8 flex flex-col items-center gap-3"
+                className="mb-6 sm:mb-8"
               >
-                {/* Logo only on mobile */}
-                <Image
-                  src="/logo.png"
-                  alt="JK"
-                  width={80}
-                  height={80}
-                  className="h-14 w-auto object-contain md:hidden"
-                />
-                <p className="text-base sm:text-lg md:text-xl font-bold text-navy tracking-tight">
+                <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-navy/[0.04] border border-navy/10 text-sm font-medium text-navy">
                   Joseph Kallabat &amp; Associates, P.C.
-                </p>
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white border border-border/60 shadow-sm text-xs sm:text-sm">
-                  <div className="flex -space-x-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-gold text-gold" />
-                    ))}
-                  </div>
-                  <span className="text-navy font-semibold">4.9</span>
-                  <span className="text-body/60">601+ reviews</span>
+                  <span className="text-body/40">&middot;</span>
+                  <span className="text-body/50 font-normal">Est. 1997</span>
                 </span>
               </motion.div>
 

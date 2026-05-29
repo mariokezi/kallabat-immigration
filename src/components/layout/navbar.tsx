@@ -69,18 +69,24 @@ export function Navbar() {
               alt="Joseph Kallabat & Associates, P.C."
               width={200}
               height={60}
-              className="h-9 sm:h-11 w-auto object-contain"
+              className="h-10 sm:h-12 w-auto object-contain"
               priority
             />
-            <div className="leading-tight">
-              <span className="font-bold text-[13px] sm:text-[15px] text-navy block whitespace-nowrap">
+            <div className="leading-tight hidden sm:block">
+              <span className="font-bold text-[15px] text-navy block whitespace-nowrap">
                 Joseph Kallabat
               </span>
-              <span className="text-[10px] sm:text-[11px] text-body/50 block -mt-0.5 whitespace-nowrap">
+              <span className="text-[11px] text-body/50 block -mt-0.5 whitespace-nowrap">
                 &amp; Associates, P.C.
               </span>
             </div>
           </Link>
+
+          {/* Centered firm name — mobile only */}
+          <div className="sm:hidden flex-1 text-center">
+            <span className="font-bold text-[13px] text-navy">Joseph Kallabat</span>
+            <span className="block text-[10px] text-body/50 -mt-0.5">&amp; Associates, P.C.</span>
+          </div>
 
           {/* Desktop nav — more spacing */}
           <nav className="hidden lg:flex items-center gap-1.5">
