@@ -1,7 +1,5 @@
 "use server";
 
-import nodemailer from "nodemailer";
-
 export async function submitQuestionnaire(data: {
   formType: string;
   fields: Record<string, string>;
@@ -22,32 +20,37 @@ export async function submitQuestionnaire(data: {
 
   const fullBody = `QUESTIONNAIRE SUBMISSION\nForm: ${formType}\nDate: ${new Date().toLocaleString("en-US", { timeZone: "America/Detroit" })}\n${body}`;
 
-  // Use SMTP if configured, otherwise log and succeed (for dev)
-  const smtpHost = process.env.SMTP_HOST;
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASS;
+  const subject = `${formType} — New Submission`;
+  const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const toEmail = process.env.FORM_RECIPIENT_EMAIL || "info@kallabatlaw.com";
+  const fromEmail = process.env.FORM_FROM_EMAIL || "noreply@kallabatlaw.com";
 
-  if (smtpHost && smtpUser && smtpPass) {
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",
-      auth: { user: smtpUser, pass: smtpPass },
+  if (RESEND_API_KEY) {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: `Kallabat Law Website <${fromEmail}>`,
+        to: toEmail,
+        subject,
+        text: fullBody,
+        reply_to: fields.email || fields.contact_email || undefined,
+      }),
     });
 
-    await transporter.sendMail({
-      from: `"Kallabat Law Website" <${smtpUser}>`,
-      to: toEmail,
-      subject: `${formType} — New Submission`,
-      text: fullBody,
-      replyTo: fields.email || fields.contact_email || undefined,
-    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Resend email failed:", errorText);
+      throw new Error("Failed to send email");
+    }
   } else {
-    // Dev mode: log to server console
-    console.log("========== FORM SUBMISSION ==========");
+    // Dev mode — log to console
+    console.log("========== FORM SUBMISSION (dev mode — no RESEND_API_KEY) ==========");
     console.log(fullBody);
-    console.log("=====================================");
+    console.log("====================================================================");
   }
 
   return { success: true };

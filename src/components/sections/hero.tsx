@@ -67,19 +67,17 @@ export function Hero() {
         <div className="relative z-10 w-full">
           <div className="max-w-7xl mx-auto px-5 sm:px-6 pt-12 pb-14 sm:pt-20 sm:pb-24 md:pt-28 md:pb-32">
             <div className="flex flex-col items-center text-center">
-              {/* Tagline badge */}
+              {/* Firm name badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="mb-6 sm:mb-8"
               >
-                <span className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-navy/[0.04] border border-navy/10 text-xs sm:text-sm text-navy">
-                  Immigration Law
+                <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-navy/[0.04] border border-navy/10 text-xs sm:text-sm font-medium text-navy">
+                  Joseph Kallabat &amp; Associates, P.C.
                   <span className="text-body/30">&middot;</span>
-                  <span className="text-body/50">Trusted Since 1997</span>
-                  <span className="text-body/30">&middot;</span>
-                  <span className="text-body/50">601+ Reviews</span>
+                  <span className="text-body/50 font-normal">Est. 1997</span>
                 </span>
               </motion.div>
 
