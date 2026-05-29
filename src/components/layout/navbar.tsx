@@ -65,13 +65,13 @@ export function Navbar() {
           scrolled ? "h-16" : "h-18"
         )}>
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5">
-            <Logo size={36} variant="dark" />
-            <div className="hidden sm:block leading-tight">
-              <span className="font-bold text-[17px] text-navy block">
+          <Link href="/" className="flex items-center gap-2">
+            <Logo size={32} variant="dark" className="sm:w-[36px] sm:h-[36px]" />
+            <div className="leading-tight">
+              <span className="font-bold text-[15px] sm:text-[17px] text-navy block">
                 Kallabat Law
               </span>
-              <span className="text-[10px] tracking-[0.1em] uppercase text-body/50 block -mt-0.5">
+              <span className="text-[9px] sm:text-[10px] tracking-[0.1em] uppercase text-body/50 block -mt-0.5 hidden sm:block">
                 Immigration Attorneys
               </span>
             </div>
@@ -161,7 +161,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 220 }}
-            className="fixed inset-0 top-[calc(4rem+1px)] z-40 bg-white overflow-y-auto lg:hidden"
+            className="fixed inset-0 top-[calc(4.5rem)] z-40 bg-white overflow-y-auto lg:hidden"
           >
             <nav className="p-6 space-y-1">
               {navLinks.map((link, i) => (

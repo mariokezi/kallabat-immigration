@@ -60,7 +60,7 @@ export function Gateway() {
             <Link href={path.href} className="group block h-full">
               <div className="relative h-full rounded-2xl border border-border/60 bg-white transition-all duration-300 overflow-hidden group-hover:shadow-[0_20px_50px_-15px_rgba(13,92,143,0.12)] group-hover:border-blue/20">
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden">
                   <Image
                     src={path.image}
                     alt={path.imageAlt}
@@ -72,7 +72,7 @@ export function Gateway() {
                 </div>
 
                 {/* Content */}
-                <div className="p-8 pt-2">
+                <div className="p-5 sm:p-8 pt-2">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-lg bg-blue/[0.06] flex items-center justify-center">
                       <path.icon className="w-5 h-5 text-blue" />

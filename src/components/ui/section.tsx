@@ -20,7 +20,7 @@ export function Section({ children, className, id, dark }: SectionProps) {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
       className={cn(
-        "relative py-24 md:py-32 px-6 overflow-hidden",
+        "relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 overflow-hidden",
         dark ? "bg-navy text-white" : "bg-white",
         className
       )}
@@ -44,7 +44,7 @@ export function SectionHeader({
   className?: string;
 }) {
   return (
-    <div className={cn("text-center mb-20", className)}>
+    <div className={cn("text-center mb-12 sm:mb-20", className)}>
       {badge && (
         <motion.span
           initial={{ opacity: 0, y: 10 }}
@@ -71,7 +71,7 @@ export function SectionHeader({
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className={cn(
-          "text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5",
+          "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 sm:mb-5",
           light ? "text-white" : "text-navy"
         )}
       >
@@ -84,7 +84,7 @@ export function SectionHeader({
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className={cn(
-            "text-lg max-w-2xl mx-auto leading-relaxed",
+            "text-base sm:text-lg max-w-2xl mx-auto leading-relaxed",
             light ? "text-white/45" : "text-body"
           )}
         >
