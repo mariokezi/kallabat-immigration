@@ -1,44 +1,14 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, PhoneCall, Star, Shield, Award, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimatedWords } from "@/components/ui/animated-hero";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { stats } from "@/data/site";
 import { useEffect, useRef, useState } from "react";
-
-/* ---------- Rotating word ---------- */
-const rotatingWords = ["Immigration", "Talent Mobility", "Workforce Solutions"];
-
-function RotatingWord() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 2800);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <span className="relative inline-block h-[1.1em] overflow-hidden align-bottom">
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={rotatingWords[index]}
-          initial={{ y: 60, opacity: 0, filter: "blur(6px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          exit={{ y: -60, opacity: 0, filter: "blur(6px)" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute left-0 text-blue whitespace-nowrap"
-        >
-          {rotatingWords[index]}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
-}
 
 /* ---------- CountUp ---------- */
 function CountUp({
@@ -93,69 +63,62 @@ function CountUp({
 export function Hero() {
   return (
     <>
-      <AuroraBackground className="min-h-[auto] md:min-h-[88vh]">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-32 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — Text content */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
-              }}
-            >
-              {/* Badge */}
+      <AuroraBackground className="min-h-[auto]">
+        <div className="relative z-10 w-full">
+          {/* Main hero content */}
+          <div className="max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+            <div className="flex flex-col items-center text-center">
+              {/* Trust badge */}
               <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue/10 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-8"
               >
-                <div className="flex -space-x-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
-                  ))}
-                </div>
-                <span className="text-sm text-navy font-medium">601+ Google Reviews</span>
+                <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white border border-border/60 shadow-sm text-sm">
+                  <div className="flex -space-x-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-gold text-gold" />
+                    ))}
+                  </div>
+                  <span className="text-navy font-semibold">4.9</span>
+                  <span className="text-body/60">from 601+ reviews</span>
+                </span>
               </motion.div>
 
-              {/* Headline */}
-              <motion.h1
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] font-bold leading-[1.1] tracking-tight text-navy mb-6"
+              {/* Headline with spring-animated words */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Leaders In Global{" "}
-                <RotatingWord />
-              </motion.h1>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-navy max-w-4xl">
+                  <span>Leaders in Global</span>
+                  <AnimatedWords
+                    words={["Immigration", "Talent Mobility", "Workforce Solutions", "Visa Strategy"]}
+                    className="text-blue"
+                  />
+                </h1>
+              </motion.div>
 
               {/* Subtitle */}
               <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="text-lg text-body max-w-lg mb-8 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.25 }}
+                className="text-lg md:text-xl text-body leading-relaxed max-w-2xl mt-8 mb-10"
               >
                 Michigan&apos;s trusted immigration law firm since 1997. We help employers
-                and individuals navigate U.S. immigration with confidence and clarity.
+                and individuals navigate U.S. immigration with confidence, clarity, and
+                decades of proven expertise.
               </motion.p>
 
               {/* CTAs */}
               <motion.div
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col sm:flex-row gap-3 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.35 }}
+                className="flex flex-col sm:flex-row gap-3"
               >
                 <Link href="/contact">
                   <Button variant="primary" size="lg" className="group">
@@ -163,92 +126,88 @@ export function Hero() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href="/for-employers">
+                <Link href="/contact">
                   <Button variant="secondary" size="lg">
-                    Explore Our Services
+                    <PhoneCall className="w-4 h-4" />
+                    (248) 865-3331
                   </Button>
                 </Link>
               </motion.div>
 
-              {/* Trust signals */}
+              {/* Credential badges */}
               <motion.div
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: { opacity: 1 },
-                }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-body/50"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="flex flex-wrap justify-center items-center gap-6 mt-10 text-xs text-body/50"
               >
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-success" />
-                  AV Preeminent Rated
+                  <Shield className="w-3.5 h-3.5 text-blue/60" />
+                  AV Preeminent
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-success" />
+                  <Award className="w-3.5 h-3.5 text-blue/60" />
                   Super Lawyers
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-success" />
+                  <BadgeCheck className="w-3.5 h-3.5 text-blue/60" />
                   AILA Member
                 </span>
               </motion.div>
-            </motion.div>
-
-            {/* Right — Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="relative hidden lg:block"
-            >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-navy/10">
-                <Image
-                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop&crop=faces"
-                  alt="Professional immigration attorneys shaking hands with client"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/20 via-transparent to-transparent" />
-              </div>
-
-              {/* Floating stat card */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="absolute -left-6 bottom-8 bg-white rounded-xl shadow-lg shadow-navy/8 p-4 border border-border/50"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-blue/10 flex items-center justify-center">
-                    <span className="text-blue font-bold text-lg">29+</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-navy">Years of Experience</p>
-                    <p className="text-xs text-body/60">Exclusively Immigration Law</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating review card */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.0, duration: 0.5 }}
-                className="absolute -right-4 top-8 bg-white rounded-xl shadow-lg shadow-navy/8 p-4 border border-border/50"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-gold text-gold" />
-                  ))}
-                </div>
-                <p className="text-xs text-navy font-semibold">4.9 Rating</p>
-                <p className="text-[10px] text-body/50">601+ Reviews</p>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
+
+          {/* People image strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-6xl mx-auto px-6 pb-8"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-navy/8 border border-border/40">
+              <Image
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=500&fit=crop&crop=center"
+                alt="Diverse professional team collaborating in modern office"
+                width={1200}
+                height={500}
+                className="w-full h-[280px] md:h-[380px] object-cover"
+                priority
+              />
+              {/* Subtle gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-navy/5 to-transparent" />
+
+              {/* Floating cards on image */}
+              <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-3">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.0 }}
+                  className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2.5 shadow-lg border border-white/80"
+                >
+                  <p className="text-xs font-bold text-navy">8 Attorneys</p>
+                  <p className="text-[10px] text-body/60">Exclusively Immigration</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.15 }}
+                  className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2.5 shadow-lg border border-white/80"
+                >
+                  <p className="text-xs font-bold text-navy">29+ Years</p>
+                  <p className="text-[10px] text-body/60">Proven Track Record</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.3 }}
+                  className="bg-white/95 backdrop-blur-sm rounded-lg px-4 py-2.5 shadow-lg border border-white/80 hidden sm:block"
+                >
+                  <p className="text-xs font-bold text-navy">7 Industries</p>
+                  <p className="text-[10px] text-body/60">From Tech to Healthcare</p>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </AuroraBackground>
 
