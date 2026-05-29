@@ -62,8 +62,8 @@ export function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 sm:h-20">
-          {/* Logo + firm name */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Logo only on mobile, logo + bubble name on desktop */}
+          <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
               src="/logo.png"
               alt="Joseph Kallabat & Associates, P.C."
@@ -72,21 +72,10 @@ export function Navbar() {
               className="h-10 sm:h-12 w-auto object-contain"
               priority
             />
-            <div className="leading-tight hidden sm:block">
-              <span className="font-bold text-[15px] text-navy block whitespace-nowrap">
-                Joseph Kallabat
-              </span>
-              <span className="text-[11px] text-body/50 block -mt-0.5 whitespace-nowrap">
-                &amp; Associates, P.C.
-              </span>
-            </div>
+            <span className="hidden lg:inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-navy/[0.03] border border-navy/8 text-[13px] text-navy font-medium whitespace-nowrap">
+              Joseph Kallabat &amp; Associates, P.C.
+            </span>
           </Link>
-
-          {/* Centered firm name — mobile only */}
-          <div className="sm:hidden flex-1 text-center">
-            <span className="font-bold text-[13px] text-navy">Joseph Kallabat</span>
-            <span className="block text-[10px] text-body/50 -mt-0.5">&amp; Associates, P.C.</span>
-          </div>
 
           {/* Desktop nav — more spacing */}
           <nav className="hidden lg:flex items-center gap-1.5">
