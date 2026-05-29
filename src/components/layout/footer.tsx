@@ -91,14 +91,12 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <Image
-                src="/logo.png"
+                src="/logo-white.png"
                 alt="Joseph Kallabat & Associates, P.C."
                 width={200}
                 height={55}
-                className="h-12 w-auto object-contain"
-                style={{ filter: "brightness(0) invert(1)" }}
+                className="h-14 w-auto object-contain opacity-90"
               />
-              <p className="text-white/60 text-sm font-medium mt-2">Joseph Kallabat &amp; Associates, P.C.</p>
             </div>
             <p className="text-white/35 text-sm mb-8 max-w-sm leading-relaxed">
               {siteConfig.description}
