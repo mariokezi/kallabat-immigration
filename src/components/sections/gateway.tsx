@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { Building2, User, ArrowRight } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/section";
 
@@ -19,8 +18,6 @@ const paths = [
       "Worksite Compliance",
       "Industry-Specific Solutions",
     ],
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop",
-    imageAlt: "Business professionals in a corporate meeting",
   },
   {
     title: "For Individuals",
@@ -34,8 +31,6 @@ const paths = [
       "Visa Consultations",
       "Status Adjustments",
     ],
-    image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop&crop=faces",
-    imageAlt: "Happy family smiling together outdoors",
   },
 ];
 
@@ -47,7 +42,7 @@ export function Gateway() {
         title="Immigration Solutions Tailored to You"
         description="Whether you're an employer seeking global talent or an individual navigating the immigration process, we're here to guide you."
       />
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
         {paths.map((path, i) => (
           <motion.div
             key={path.title}
@@ -58,47 +53,32 @@ export function Gateway() {
             whileHover={{ y: -6 }}
           >
             <Link href={path.href} className="group block h-full">
-              <div className="relative h-full rounded-2xl border border-border/60 bg-white transition-all duration-300 overflow-hidden group-hover:shadow-[0_20px_50px_-15px_rgba(13,92,143,0.12)] group-hover:border-blue/20">
-                {/* Image */}
-                <div className="relative h-40 sm:h-48 overflow-hidden">
-                  <Image
-                    src={path.image}
-                    alt={path.imageAlt}
-                    width={600}
-                    height={400}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+              <div className="relative h-full p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl border border-border/60 bg-white transition-all duration-300 overflow-hidden group-hover:shadow-[0_20px_50px_-15px_rgba(13,92,143,0.12)] group-hover:border-blue/20">
+                <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue/[0.06] flex items-center justify-center group-hover:bg-blue/[0.10] transition-colors duration-300">
+                    <path.icon className="w-5 h-5 text-blue" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-navy">
+                    {path.title}
+                  </h3>
                 </div>
 
-                {/* Content */}
-                <div className="p-5 sm:p-8 pt-2">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-blue/[0.06] flex items-center justify-center">
-                      <path.icon className="w-5 h-5 text-blue" />
-                    </div>
-                    <h3 className="text-xl font-bold text-navy">
-                      {path.title}
-                    </h3>
-                  </div>
+                <p className="text-body text-sm mb-5 sm:mb-6 leading-relaxed">
+                  {path.description}
+                </p>
 
-                  <p className="text-body text-sm mb-6 leading-relaxed">
-                    {path.description}
-                  </p>
+                <ul className="space-y-2.5 mb-5 sm:mb-6">
+                  {path.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2.5 text-sm">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue shrink-0" />
+                      <span className="text-dark/80">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                  <ul className="space-y-2.5 mb-6">
-                    {path.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2.5 text-sm">
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue shrink-0" />
-                        <span className="text-dark/80">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex items-center gap-2 text-blue font-semibold text-sm group-hover:gap-3 transition-all duration-300">
-                    Learn More
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
+                <div className="flex items-center gap-2 text-blue font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                  Learn More
+                  <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
             </Link>

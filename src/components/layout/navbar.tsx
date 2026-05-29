@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { siteConfig, navLinks } from "@/data/site";
 import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/ui/logo";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,16 +65,15 @@ export function Navbar() {
           scrolled ? "h-16" : "h-18"
         )}>
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <Logo size={32} variant="dark" className="sm:w-[36px] sm:h-[36px]" />
-            <div className="leading-tight">
-              <span className="font-bold text-[15px] sm:text-[17px] text-navy block">
-                Kallabat Law
-              </span>
-              <span className="text-[9px] sm:text-[10px] tracking-[0.1em] uppercase text-body/50 block -mt-0.5 hidden sm:block">
-                Immigration Attorneys
-              </span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Joseph Kallabat & Associates, P.C."
+              width={180}
+              height={50}
+              className="h-8 sm:h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}

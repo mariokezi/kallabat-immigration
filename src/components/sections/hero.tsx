@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, PhoneCall, Star, Shield, Award, BadgeCheck } from "lucide-react";
+import { ArrowRight, PhoneCall, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedWords } from "@/components/ui/animated-hero";
 import { AuroraBackground } from "@/components/ui/aurora-background";
@@ -65,8 +65,7 @@ export function Hero() {
     <>
       <AuroraBackground className="min-h-[auto]">
         <div className="relative z-10 w-full">
-          {/* Main hero content */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-12 sm:pt-16 sm:pb-20 md:pt-24 md:pb-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-12 sm:pt-16 sm:pb-20 md:pt-20 md:pb-24">
             <div className="flex flex-col items-center text-center">
               {/* Trust badge */}
               <motion.div
@@ -86,7 +85,7 @@ export function Hero() {
                 </span>
               </motion.div>
 
-              {/* Headline with spring-animated words */}
+              {/* Headline */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -135,64 +134,33 @@ export function Hero() {
                 </Link>
               </motion.div>
 
-              {/* Credential badges */}
+              {/* Trust badges with real AILA logo */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mt-8 sm:mt-10 text-[11px] sm:text-xs text-body/50"
+                className="flex flex-wrap justify-center items-center gap-5 sm:gap-8 mt-10 sm:mt-14"
               >
-                <span className="flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-blue/60" />
-                  AV Preeminent
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Award className="w-3.5 h-3.5 text-blue/60" />
-                  Super Lawyers
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <BadgeCheck className="w-3.5 h-3.5 text-blue/60" />
-                  AILA Member
-                </span>
+                <Image
+                  src="/aila-2026.png"
+                  alt="AILA Member 2026"
+                  width={70}
+                  height={70}
+                  className="w-[50px] h-[50px] sm:w-[65px] sm:h-[65px] object-contain opacity-70"
+                />
+                <div className="h-8 w-px bg-border/60 hidden sm:block" />
+                <div className="text-center">
+                  <p className="text-xs sm:text-sm font-semibold text-navy">AV Preeminent</p>
+                  <p className="text-[10px] sm:text-xs text-body/50">Martindale-Hubbell</p>
+                </div>
+                <div className="h-8 w-px bg-border/60 hidden sm:block" />
+                <div className="text-center">
+                  <p className="text-xs sm:text-sm font-semibold text-navy">Super Lawyers</p>
+                  <p className="text-[10px] sm:text-xs text-body/50">Selected Annually</p>
+                </div>
               </motion.div>
             </div>
           </div>
-
-          {/* People image strip */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-6xl mx-auto px-4 sm:px-6 pb-6 sm:pb-8"
-          >
-            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl shadow-navy/8 border border-border/40">
-              <Image
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=500&fit=crop&crop=center"
-                alt="Professional attorneys consulting with clients in modern office"
-                width={1200}
-                height={500}
-                className="w-full h-[200px] sm:h-[280px] md:h-[380px] object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-navy/5 to-transparent" />
-
-              {/* Floating cards on image */}
-              <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 flex flex-wrap gap-2 sm:gap-3">
-                <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-white/80">
-                  <p className="text-[11px] sm:text-xs font-bold text-navy">8 Attorneys</p>
-                  <p className="text-[9px] sm:text-[10px] text-body/60">Exclusively Immigration</p>
-                </div>
-                <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-white/80">
-                  <p className="text-[11px] sm:text-xs font-bold text-navy">29+ Years</p>
-                  <p className="text-[9px] sm:text-[10px] text-body/60">Proven Track Record</p>
-                </div>
-                <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-white/80 hidden sm:block">
-                  <p className="text-xs font-bold text-navy">7 Industries</p>
-                  <p className="text-[10px] text-body/60">From Tech to Healthcare</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </AuroraBackground>
 
